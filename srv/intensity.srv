@@ -1,0 +1,5 @@
+geometry_msgs/Point pos
+--- 
+int8 intensity
+uint32 x
+uint32 y

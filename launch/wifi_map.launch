@@ -1,0 +1,13 @@
+<launch> 
+
+	<arg name="map_file" default="$(find wifly2)/config/maps/floorplan.yaml" />
+
+	<arg name="position_data" default="368 275 0.05" />
+
+	<node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" />
+
+	<node pkg="wifly2" type="position_query" name="position_query" />
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find wifly2)/rviz/wifi_data_test.rviz" />
+
+</launch>
