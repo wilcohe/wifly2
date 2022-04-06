@@ -32,8 +32,8 @@ bool occupiedCallback(wifly2::intensity::Request  &req,
   ROS_INFO("Nearest cell is (%d, %d).", xcell, ycell); 
   if(xcell < 0 || ycell < 0){
     res.intensity = 1; 
-    res.xcell = -1; 
-    res.ycell = -1; 
+    res.x = -1; 
+    res.y = -1; 
     return true; 
   }
 
