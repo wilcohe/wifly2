@@ -51,12 +51,9 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "position_query");
   ros::NodeHandle nh("~");
-<<<<<<< HEAD
   ros::Subscriber map_sub = nh.subscribe("/map", 1, map_callback); 
   ros::Subscriber wifi_sub = nh.subscribe("/wifi_map", 1, wifi_callback); 
-=======
-  ros::Subscriber map_sub = nh.subscribe("/wifi_map", 1, map_callback); 
->>>>>>> cc60a6a478d224d32c9d96adf6c01abd92e893ea
+
   
   ros::Rate rate(1.0); 
 
