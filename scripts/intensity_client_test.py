@@ -14,7 +14,7 @@ def intensity_query_client(pos):
 	except rospy.ServiceException as e: 
 		print(f"Exception {e} occurred")
 
-def gen_wifi(width, height, res):
+def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 
 	occ_map = OccupancyGrid()
 	occ_map.info.resolution = res
@@ -48,7 +48,7 @@ def gen_wifi(width, height, res):
 			occ = intensity_query_client(gen_pt(pos))
 
 			if occ.intensity > 0:
-				wifi *= 0.9
+				wifi *= os_decay
 				pos += 0.04*d_o_m
 			elif all(np.array([occ.x, occ.y]) < bounds):
 
@@ -59,7 +59,7 @@ def gen_wifi(width, height, res):
 					w_map[occ.y, occ.x] += round((1 - wifi)*-100)
 					w_map[occ.y, occ.x] = int(w_map[occ.y, occ.x]/2)
 
-				wifi *= 0.995
+				wifi *= us_decay
 
 				pos += 0.04*d_o_m
 			else:

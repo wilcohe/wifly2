@@ -33,8 +33,8 @@ bool occupiedCallback(wifly2::intensity::Request  &req,
   ROS_INFO("Nearest cell is (%d, %d).", xcell, ycell); 
   if(xcell < 0 || ycell < 0){
     res.intensity = 1; 
-    res.xcell = -1; 
-    res.ycell = -1; 
+    res.x = -1; 
+    res.y = -1; 
     return true; 
   }
 
@@ -51,8 +51,12 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "position_query");
   ros::NodeHandle nh("~");
+<<<<<<< HEAD
   ros::Subscriber map_sub = nh.subscribe("/map", 1, map_callback); 
   ros::Subscriber wifi_sub = nh.subscribe("/wifi_map", 1, wifi_callback); 
+=======
+  ros::Subscriber map_sub = nh.subscribe("/wifi_map", 1, map_callback); 
+>>>>>>> cc60a6a478d224d32c9d96adf6c01abd92e893ea
   
   ros::Rate rate(1.0); 
 
