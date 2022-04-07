@@ -43,7 +43,7 @@ bool occupiedCallback(wifly2::intensity::Request  &req,
   int ycell = (int)std::round(req.pos.y/base_map.info.resolution); 
 
   ROS_INFO("Nearest cell is (%d, %d).", xcell, ycell); 
-  if(xcell < 0 || ycell < 0){
+  if(xcell < 0 || ycell < 0 || xcell > base_map.info.width || ycell > base_map.info.height){
     res.intensity = 1; 
     res.x = -1; 
     res.y = -1; 
