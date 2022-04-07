@@ -1,5 +1,6 @@
 geometry_msgs/Point pos
 --- 
 int8 intensity
+bool occupied
 uint32 x
 uint32 y
