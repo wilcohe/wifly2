@@ -8,6 +8,8 @@
 
 	<node pkg="wifly2" type="position_query" name="position_query" />
 
+	<node pkg="wifly2" type="intensity_client_test.py" name="wifi_host" />
+
 	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find wifly2)/rviz/wifi_data_test.rviz" />
 
 </launch>
