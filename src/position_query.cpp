@@ -24,6 +24,18 @@ void map_callback(const nav_msgs::OccupancyGrid map){
 
 }
 
+void wifi_callback(const nav_msgs::OccupancyGrid map){
+
+  ROS_INFO("Received Wifi"); 
+  ROS_INFO("Size: %ld", map.data.size()); 
+  ROS_INFO("Width: %d", map.info.width); 
+  ROS_INFO("Height: %d", map.info.height); 
+  ROS_INFO("Res: %f", map.info.resolution); 
+
+  wifi_map = map; 
+
+}
+
 bool occupiedCallback(wifly2::intensity::Request  &req,
                       wifly2::intensity::Response &res){
 
