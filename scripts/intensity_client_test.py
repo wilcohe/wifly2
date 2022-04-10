@@ -89,7 +89,8 @@ if __name__ == "__main__":
 	h = float(sys.argv[2])
 	r = float(sys.argv[3])
 
-	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/custom_map2_avg.txt")
+	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/custom_map2.txt")
+
 
 	if os.path.exists(_PATH): 
 		print("Loading WiFi data from source. ")
