@@ -52,7 +52,7 @@ bool occupiedCallback(wifly2::intensity::Request  &req,
 
   res.occupied = base_map.data[ycell*base_map.info.width + xcell] > 0 ? true : false; 
   // res.intensity = wifi_map.data[ycell*base_map.info.width + xcell];
-  res.intensity = 0;
+  res.intensity = 0;  
   res.x = xcell; 
   res.y = ycell; 
 

@@ -14,7 +14,7 @@ def intensity_query_client(pos):
 	except rospy.ServiceException as e: 
 		print(f"Exception {e} occurred")
 
-def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
+def gen_wifi(width, height, res, us_decay=0.997, os_decay=0.95):
 
 	occ_map = OccupancyGrid()
 	occ_map.info.resolution = res
@@ -28,7 +28,7 @@ def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 	bounds = np.array([width, height])
 	rays = np.arange(0, 2*np.pi, 0.005)
 	w_map = np.zeros((int(height), int(width)))
-	router = np.array(size)/2
+	router = np.array(size)/2 - np.array([2, 2.5])
 	step = 0.001
 	pt = Point()
 
@@ -41,7 +41,7 @@ def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 		wifi = 1
 		d_o_m = np.array([np.cos(ray), np.sin(ray)])
 
-		while all(pos > 0) and all(pos < size) and wifi > 0.1:
+		while all(pos > 0) and all(pos < size):# and wifi > 0.1:
 
 			pos_pt = gen_pt(pos)
 
@@ -66,7 +66,7 @@ def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 				break
 
 	occ_map_flat = w_map.ravel().astype(int)
-	np.savetxt("custom_map.txt", occ_map_flat)
+	np.savetxt("custom_map2.txt", occ_map_flat)
 	occ_map.data = occ_map_flat.tolist()
 
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 	h = float(sys.argv[2])
 	r = float(sys.argv[3])
 
-	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/custom_map.txt")
+	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/custom_map2.txt")
 
 	if os.path.exists(_PATH): 
 		print("Loading WiFi data from source. ")
