@@ -34,7 +34,7 @@ void wifi_callback(const nav_msgs::OccupancyGrid map){
 
   wifi_map = map; 
 
-}
+} 
 
 bool occupiedCallback(wifly2::intensity::Request  &req,
                       wifly2::intensity::Response &res){
@@ -51,7 +51,7 @@ bool occupiedCallback(wifly2::intensity::Request  &req,
   }
 
   res.occupied = base_map.data[ycell*base_map.info.width + xcell] > 0 ? true : false; 
-  // res.intensity = wifi_map.data[ycell*base_map.info.width + xcell];
+  res.intensity = wifi_map.data[ycell*base_map.info.width + xcell];
   res.intensity = 0;  
   res.x = xcell; 
   res.y = ycell; 
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "position_query");
   ros::NodeHandle nh("~");
   ros::Subscriber map_sub = nh.subscribe("/map", 1, map_callback); 
-  // ros::Subscriber wifi_sub = nh.subscribe("/wifi_map", 1, wifi_callback); 
+  ros::Subscriber wifi_sub = nh.subscribe("/wifi_map", 1, wifi_callback); 
 
   
   ros::Rate rate(1.0); 
