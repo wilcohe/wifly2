@@ -47,7 +47,7 @@ def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 
 			occ = intensity_query_client(gen_pt(pos))
 
-			if occ.intensity > 0:
+			if occ.occupied:
 				wifi *= os_decay
 				pos += 0.04*d_o_m
 			elif all(np.array([occ.x, occ.y]) < bounds):
@@ -66,7 +66,7 @@ def gen_wifi(width, height, res, us_decay=0.995, os_decay=0.9):
 				break
 
 	occ_map_flat = w_map.ravel().astype(int)
-	np.savetxt("wifi_map.txt", occ_map_flat)
+	np.savetxt("custom_map.txt", occ_map_flat)
 	occ_map.data = occ_map_flat.tolist()
 
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 	h = float(sys.argv[2])
 	r = float(sys.argv[3])
 
-	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/wifi_map.txt")
+	_PATH = os.path.join(rospkg.RosPack().get_path("wifly2"), "config/maps/custom_map.txt")
 
 	if os.path.exists(_PATH): 
 		print("Loading WiFi data from source. ")
