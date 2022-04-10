@@ -1,8 +1,8 @@
 <launch> 
 
-	<arg name="map_file" default="$(find wifly2)/config/maps/floorplan.yaml" />
+	<arg name="map_file" default="$(find wifly2)/config/maps/customMap1.yaml" />
 
-	<arg name="position_data" default="368 275 0.05" />
+	<arg name="position_data" default="799 600 0.05" />
 
 	<node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" />
 
